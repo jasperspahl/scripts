@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[[ -f ~/.cache/texdoc.tmp ]] && ls -R1 `kpsewhich --var-value=TEXMFDIST|sed -e 's/[{}!]//g;s/,/ /g'`|grep "[.]pdf$"|sort|uniq>~/.cache/texdoc.tmp
+[[$(date +%s -r ~/.cache/texdoc.tmp) -lt $(date +%s --date="7 days ago")]] && ls -R1 `kpsewhich --var-value=TEXMFDIST|sed -e 's/[{}!]//g;s/,/ /g'`|grep "[.]pdf$"|sort|uniq>~/.cache/texdoc.tmp
+file=$(cat ~/.cache/texdoc.tmp|dmenu -p "texdoc")
+texdoc $file 2>/dev/null

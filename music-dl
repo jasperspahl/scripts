@@ -1,0 +1,23 @@
+#! /usr/bin/env zsh
+echo "Album  [optional]: "
+read input
+if [[ -n $input ]];then album="-l $input" else album="" fi
+echo "Artist [optional]: "
+read input
+if [[ -n $input ]];then artist="-a $input" else artist="" fi
+echo "Year   [optional]: "
+read input
+if [[ -n $input ]];then year="-y $input" else year="" fi
+echo "Genre  [optional]: "
+read input
+if [[ -n $input ]];then genre="-g $input" else genre="" fi
+mkdir tempdirlol
+cd tempdirlol
+youtube-dl -x --audio-format mp3 --console-title -f bestaudio $1
+for i in *.mp3
+do
+  mp3info -i $artist $album $year $genre $i
+  mv $i ../
+done
+cd ..
+rm -rf tempdirlol/

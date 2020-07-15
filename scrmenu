@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dir=${SCREENLAYOUTDIR-~/.screenlayout}
+
+layout=$(/usr/bin/ls $dir | dmenu $@)
+
+$dir/$layout

@@ -1,0 +1,2 @@
+#!/bin/sh
+sdcv -u "Oxford Advanced Learner's Dictionary 7th" -n $1 | sed 's/<img[^>]*>//g' | awk '{gsub(/<br>/,RS)}1 {gsub(/<b>/, "\033[1m")}2 {gsub(/<\/b>/, "\033[22m")}3 {gsub(/<i>/, "\033[3m")}4 {gsub(/<\/i>/, "\033[23m")}5 {gsub(/<\/font>/, "\033[0m")}6 {gsub(/<font color="blue">/, "\033[34m")}7 {gsub(/<font color="green">/, "\033[32m")}8 {gsub(/<font color="#004080">/, "\033[36m")}9 {gsub(/<font color="#47A1EA">/, "\033[94m")}10 {gsub(/<font color="#F14B35">/, "\033[31m")}11 {gsub(/<font color="#FF0000" face="Arial">/, "\033[31m")}12'
