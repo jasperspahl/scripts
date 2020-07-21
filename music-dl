@@ -1,20 +1,23 @@
 #!/bin/sh
-echo "Album  [optional]: "
-read input
-[[ -n $input ]] && album="-l $input" || album=""
+
+musicdir="${MUSICDIR:-$HOME/Musik}"
+
 echo "Artist [optional]: "
 read input
-[[ -n $input ]] && artist="-a $input" || artist=""
+[[ -n $input ]] && artist="-a $(echo $input | sed -e "s/\s/_/g")" && musicdir="$musicdir/$(echo $input | sed -e "s/\s/_/g; s/\(.*\)/\L\1/g")" || artist=""
+echo "Album  [optional]: "
+read input
+[[ -n $input ]] && album="-l $(echo $input | sed -e "s/\s/_/g")" && musicdir="$musicdir/$(echo $input | sed -e "s/\s/_/g; s/\(.*\)/\L\1/g")" || album=""
 echo "Year   [optional]: "
 read input
 [[ -n $input ]] && year="-y $input" || year=""
-mkdir temp
-cd temp
+mkdir -p $musicdir/temp
+cd $musicdir/temp
 youtube-dl -x --audio-format mp3 --console-title -f bestaudio $1
 for i in *.mp3
 do
-  mp3info -i $artist $album $year $genre "$i"
+  mp3info -i $artist $album $year "$i"
   mv "$i" ../
 done
 cd ..
-rm -rf temp/
+rm -rf $musicdir/temp/
