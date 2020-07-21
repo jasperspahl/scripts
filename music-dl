@@ -1,18 +1,18 @@
 #! /usr/bin/env zsh
 echo "Album  [optional]: "
 read input
-if [[ -n $input ]];then album="-l $input" else album="" fi
+[[ -n $input ]] && album="-l $input" || album=""
 echo "Artist [optional]: "
 read input
-if [[ -n $input ]];then artist="-a $input" else artist="" fi
+[[ -n $input ]] && artist="-a $input" || artist=""
 echo "Year   [optional]: "
 read input
-if [[ -n $input ]];then year="-y $input" else year="" fi
+[[ -n $input ]] && year="-y $input" || year=""
 echo "Genre  [optional]: "
 read input
-if [[ -n $input ]];then genre="-g $input" else genre="" fi
-mkdir tempdirlol
-cd tempdirlol
+[[ -n $input ]] && genre="-g $input" || genre=""
+mkdir temp
+cd temp
 youtube-dl -x --audio-format mp3 --console-title -f bestaudio $1
 for i in *.mp3
 do
@@ -20,4 +20,4 @@ do
   mv $i ../
 done
 cd ..
-rm -rf tempdirlol/
+rm -rf temp/
