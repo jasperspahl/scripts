@@ -22,4 +22,4 @@ or inspired by [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
 
 ## pts
 
-**pts** enables press to select on the thinkpat trackpoint
+**pts** enables press to select on the Thinkpad trackpoint
