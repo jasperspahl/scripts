@@ -8,6 +8,8 @@ or inspired by [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
 
 **music-dl** is a script which downloads music from youtube and automaticly tags them
 
+**usage**: music-dl <url>
+
 **dependencies**:
 - youtube-dl
 - ffmpeg
@@ -23,3 +25,6 @@ or inspired by [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
 ## pts
 
 **pts** enables press to select on the Thinkpad trackpoint
+
+**dependencies**:
+- sudo
