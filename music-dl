@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#!/bin/sh
 echo "Album  [optional]: "
 read input
 [[ -n $input ]] && album="-l $input" || album=""
