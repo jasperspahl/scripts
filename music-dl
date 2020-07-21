@@ -13,8 +13,8 @@ cd temp
 youtube-dl -x --audio-format mp3 --console-title -f bestaudio $1
 for i in *.mp3
 do
-  mp3info -i $artist $album $year $genre $i
-  mv $i ../
+  mp3info -i $artist $album $year $genre "$i"
+  mv "$i" ../
 done
 cd ..
 rm -rf temp/
