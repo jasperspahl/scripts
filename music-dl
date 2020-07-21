@@ -8,9 +8,6 @@ read input
 echo "Year   [optional]: "
 read input
 [[ -n $input ]] && year="-y $input" || year=""
-echo "Genre  [optional]: "
-read input
-[[ -n $input ]] && genre="-g $input" || genre=""
 mkdir temp
 cd temp
 youtube-dl -x --audio-format mp3 --console-title -f bestaudio $1
