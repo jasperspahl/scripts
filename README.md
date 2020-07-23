@@ -28,3 +28,10 @@ or inspired by [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
 
 **dependencies**:
 - sudo
+
+## i3-display-swap.sh
+
+This script is copied from [fbrinker](https://gist.github.com/fbrinker/df9cfbc84511d807f45041737ff3ea02)
+
+**dependencies**:
+- jq
