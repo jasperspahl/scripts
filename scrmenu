@@ -2,6 +2,15 @@
 
 dir=${SCREENLAYOUTDIR-~/.screenlayout}
 
-layout=$(/usr/bin/ls $dir | dmenu $@)
+case $1 in
+	restore )
+		$dir/latest
+		;;
+	* )
+		lines=$(ls -l | wc -l)
+		layout=$(ls $dir | dmenu -p $dir -l $lines $@)
+		[ -f "$dir/$layout" ] && ln -sf "$(readlink -f "$dir/$layout")" "$dir/latest"
+		$dir/$layout
+		;;
+esac
 
-$dir/$layout
